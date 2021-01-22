@@ -4,6 +4,15 @@
 
 Ce projet doit permettre d'évaluer les compétences des élèves.
 
+## Étape de réalisation
+
+1. Lister fonctionnalités attendues
+1. Faire un diagramme de classe
+1. Créer les entités avec make:entity (pensez à configurer l'accés à votre BDD)
+1. Créer les pages attendues avec make:controller
+1. Créer le système de gestion des comptes utilisateurs
+1. Coder toute la logique métier
+
 ### Liste fonctionnalités attendues
 
 * pouvoir créer des questions en markdown
