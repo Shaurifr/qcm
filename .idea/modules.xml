@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../cesar/.idea/cesar.iml" filepath="$PROJECT_DIR$/../cesar/.idea/cesar.iml" />
       <module fileurl="file://$PROJECT_DIR$/../joker/.idea/joker.iml" filepath="$PROJECT_DIR$/../joker/.idea/joker.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/qcm.iml" filepath="$PROJECT_DIR$/.idea/qcm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../safe/.idea/safe.iml" filepath="$PROJECT_DIR$/../safe/.idea/safe.iml" />
     </modules>
   </component>
 </project>

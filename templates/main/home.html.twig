@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QCMaster{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('main_home') }}
+{% endblock %}
+
+{% block post_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('main_home') }}
+    <script>
+        var readyInside = (callback) => {
+            if (document.readyState !== "loading") callback();
+            else document.addEventListener("DOMContentLoaded", callback);
+        }
+        readyInside(() => {
+            setHeaderImage('{{ asset('images/header.jpg') }}')
+        })
+
+    </script>
+{% endblock %}
+
+{% block body %}
+    <header class="page-header header container-fluid">
+        <div class="overlay"></div>
+        <div class="description">
+            <h1>Bienvenue sur QCMaster</h1>
+            <p>Maitrisez les QCM avec QCMaster.</p>
+            <button onclick="window.location='{{ path('app_login') }}'" class="btn btn-outline-secondary btn-lg">Me Connecter</button>
+            <button onclick="window.location='{{ path('app_register') }}'" class="btn btn-outline-secondary btn-lg">Me créer un compte</button>
+        </div>
+    </header>
+    <div class="container features">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <h3 class="feature-title">Enseignants</h3>
+                <img src="{{ asset('images/enseignant.jpg') }}" class="img-fluid">
+                <p>Créer rapidement et simplement vos QCM.</p>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <h3 class="feature-title">Élèves</h3>
+                <img src="{{ asset('images/eleve.jpg') }}" class="img-fluid">
+                <p>Répondez et obtenez vos résultats aux QCM en toutes sécurité.</p>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <h3 class="feature-title">Contactez nous pour en savoir plus !</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nom" name="name">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Courriel" name="email">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="4"></textarea>
+                </div>
+                <input type="submit" class="btn btn-secondary btn-block" value="Envoyer" name="">
+            </div>
+        </div>
+    </div>
+    <div class="background">
+        <div class="container team">
+            <div class="row">
+                <div class="card col-lg-4 col-md-12 col-sm-12 text-center">
+                    <img class="card-img-top rounded-circle" src="{{ asset('images/carlos.jpg') }}" alt="Photo de Carlos">
+                    <div class="card-body">
+                        <h4 class="card-title">Carlos</h4>
+                        <p class="card-text">QCMaster</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">En savoir plus</h6>
+                    <p>QCMaster a été créé dans le but de vous rendre maitre des QCM.</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                    <p>10, avenue de l'églantine<br/>44 800 Saint-Herblain
+                        <br/><a href="mailto:qcmaster@shauri.fr">qcmaster@shauri.fr</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-copyright text-center">© 2021 Copyright qcmaster.com</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+{#    <h1>Let's QCMaster</h1>#}
+{% endblock %}
