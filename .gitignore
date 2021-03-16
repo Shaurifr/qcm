@@ -12,7 +12,7 @@
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
-/phpunit.xml
+#/phpunit.xml
 ###< symfony/phpunit-bridge ###
 
 ###> symfony/webpack-encore-bundle ###
@@ -21,3 +21,10 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###> friends-of-behat/symfony-extension ###
+#/behat.yml
+###< friends-of-behat/symfony-extension ###
+
+# On ignore les screenshots pris pendant les tests
+/public/panther/

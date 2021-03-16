@@ -28,16 +28,17 @@ Ce projet doit permettre d'évaluer les compétences des élèves.
 
 ## Liste Pages
 
-* `/` Page d'accueil
-* `/login` Page de connexion
-* `/register` Page de création de compte
+* `/` Page d'accueil ✔️
+* `/login` Page de connexion ✔️
+* `/register` Page de création de compte ✔️
 
 En tant qu'élève :  
 * `/{userId}` Tableau de bord d'un utilisateur
 * `/{userId}/exam` Liste des examens lié à l'utilisateur en tant que participant
-* `/{userId}/exam/{id}` détail d'un examen
-* `/{userId}/exam/{id}/{sequence}` passage d'un l'examen
-* `/{userId}/exam/{id}/result` résultat d'un l'examen
+* `/{userId}/exam/{id}` détail d'un examen  
+  
+* `/exam/{id}/{userId}/{sequence}` passage d'un l'examen
+* `/exam/{id}/{userId}/result` résultat d'un l'examen
 
 En tant que formateur :  
 * `/question` liste des questions qu'on a créé
