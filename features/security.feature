@@ -11,3 +11,18 @@ Feature:
         Given on se trouve sur la page "/"
         When Je clique sur le bouton "Se créer un compte"
         Then Je suis alors sur la page "/register"
+
+    Scenario: Le mot de passe doit avoir au moins 8 caractères
+        Given on se trouve sur la page "/register"
+        When je remplis le champ "registration_form[username]" avec "be@hat.com"
+        When je remplis le champ "registration_form[plainPassword]" avec "behat"
+        When Je clique sur le bouton "Créer un compte"
+        Then Je suis alors sur la page "/register"
+        Then Je lis alors sur la page "Votre mot de passe doit contenir au moins 8 caractères."
+
+    Scenario: On se crée un compte
+        Given on se trouve sur la page "/register"
+        When je remplis le champ "registration_form[username]" avec "be@hat.com"
+        When je remplis le champ "registration_form[plainPassword]" avec "behat678"
+        When Je clique sur le bouton "Créer un compte"
+        Then Je suis alors sur la page "/admin"

@@ -1,4 +1,28 @@
 {
+    "amphp/amp": {
+        "version": "v2.5.2"
+    },
+    "amphp/byte-stream": {
+        "version": "v1.8.0"
+    },
+    "amphp/parallel": {
+        "version": "v1.4.0"
+    },
+    "amphp/parallel-functions": {
+        "version": "v1.0.0"
+    },
+    "amphp/parser": {
+        "version": "v1.0.0"
+    },
+    "amphp/process": {
+        "version": "v1.1.0"
+    },
+    "amphp/serialization": {
+        "version": "v1.0.0"
+    },
+    "amphp/sync": {
+        "version": "v1.4.0"
+    },
     "behat/behat": {
         "version": "v3.8.1"
     },
@@ -10,6 +34,12 @@
     },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
+    },
+    "composer/semver": {
+        "version": "3.2.4"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.5"
     },
     "dbrekelmans/bdi": {
         "version": "0.3"
@@ -35,6 +65,9 @@
     "doctrine/common": {
         "version": "3.1.1"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.5.0"
+    },
     "doctrine/dbal": {
         "version": "2.12.1"
     },
@@ -51,6 +84,18 @@
             "config/packages/prod/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "e5b542d4ef47d8a003c91beb35650c76907f7e53"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -108,8 +153,23 @@
             "tests/Behat/DemoContext.php"
         ]
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.16",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.16",
+            "ref": "c1947bad147704aeaf0285745f0baae927a58959"
+        },
+        "files": [
+            ".php_cs.dist"
+        ]
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
+    },
+    "gitonomy/gitlib": {
+        "version": "v1.2.3"
     },
     "laminas/laminas-code": {
         "version": "4.0.0"
@@ -126,8 +186,17 @@
     "nikic/php-parser": {
         "version": "v4.10.4"
     },
+    "ondram/ci-detector": {
+        "version": "3.5.1"
+    },
+    "opis/closure": {
+        "version": "3.6.1"
+    },
     "php": {
         "version": "7.4"
+    },
+    "php-cs-fixer/diff": {
+        "version": "v1.3.1"
     },
     "php-webdriver/webdriver": {
         "version": "1.10.0"
@@ -140,6 +209,21 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
+    },
+    "phpro/grumphp": {
+        "version": "v1.3.1"
+    },
+    "phpstan/phpstan": {
+        "version": "0.12.81"
+    },
+    "phpstan/phpstan-deprecation-rules": {
+        "version": "0.12.6"
+    },
+    "phpstan/phpstan-doctrine": {
+        "version": "0.12.33"
+    },
+    "phpstan/phpstan-symfony": {
+        "version": "0.12.21"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -155,6 +239,9 @@
     },
     "psr/log": {
         "version": "1.1.3"
+    },
+    "seld/jsonlint": {
+        "version": "1.8.3"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -394,6 +481,9 @@
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.22.0"
+    },
+    "symfony/polyfill-php70": {
+        "version": "v1.20.0"
     },
     "symfony/polyfill-php73": {
         "version": "v1.22.0"

@@ -14,6 +14,7 @@ use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 use Symfony\Component\Panther\PantherTestCase;
 use Symfony\Component\Panther\PantherTestCaseTrait;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 
 /**
@@ -26,6 +27,7 @@ final class AppContext extends PantherTestCase implements Context
 {
     private Crawler $crawler;
     private Client $client;
+    private array $form = [];
 
     /**
      * @Given /^on se trouve sur la page "([^"]*)"$/
@@ -33,6 +35,7 @@ final class AppContext extends PantherTestCase implements Context
     public function onSeTrouveSurLaPage($page)
     {
         $this->client = self::createPantherClient();
+        $this->crawler = $this->client->request('GET', '/logout'); // on se déconnecte, au cas où
         $this->crawler = $this->client->request('GET', $page);
     }
 
@@ -41,7 +44,15 @@ final class AppContext extends PantherTestCase implements Context
      */
     public function jeCliqueSurLeBouton($button)
     {
-        $this->client->clickLink($button);
+        if ($this->client->getCrawler()->selectButton($button)->getElement(0)) {
+            $form = $this->client->getCrawler()->selectButton($button)->form();
+            foreach ($this->form as $field => $value) {
+                $form[$field] = $value;
+            }
+            $this->client->submit($form);
+        } else {
+            $this->client->clickLink($button);
+        }
     }
 
     /**
@@ -51,13 +62,39 @@ final class AppContext extends PantherTestCase implements Context
     {
         $currentPage = $this->extractPage($this->client->getCurrentURL());
         if ($page != $currentPage) {
+            $page = $page === '/' ? 'home' : $page;
+            $this->client->takeScreenshot('public/panther/echec/jeSuisAlorsSurLaPage'.$page.'.png');
             throw new \Exception('on est sur la page '.$currentPage);
         }
+        $page = $page === '/' ? 'home' : $page;
         $this->client->takeScreenshot('public/panther/jeSuisAlorsSurLaPage'.$page.'.png');
     }
 
     private function extractPage($url)
     {
-        return explode((string) self::$defaultOptions['port'], $url)[1];
+        return explode((string)self::$defaultOptions['port'], $url)[1];
+    }
+
+    /**
+     * @When /^je remplis le champ "([^"]*)" avec "([^"]*)"$/
+     */
+    public function jeRemplisLeChampAvec($field, $value)
+    {
+        $this->form[$field] = $value;
+    }
+
+    /**
+     * @Then /^Je lis alors sur la page "([^"]*)"$/
+     */
+    public function jeLisAlorsSurLaPage($text)
+    {
+        $slugger = new AsciiSlugger();
+        $slugText = $slugger->slug($text);
+        if (strpos($this->client->getCrawler()->html(), $text) === false) {
+            $this->client->takeScreenshot('public/panther/echec/jeLis/'.$slugText.'.png');
+            throw new \Exception('Le texte '.$text.' n\'est pas dans la page.');
+        }
+        $this->client->takeScreenshot('public/panther/jeLis/'.$slugText.'.png');
+
     }
 }

@@ -1,0 +1,40 @@
+grumphp:
+#    ascii: ~
+    stop_on_failure: true
+    tasks:
+        git_blacklist:
+            keywords:
+                - "die("
+                - "die ("
+                - "print_r"
+                - "var_export"
+                - "die;"
+                - "die ;"
+                - "dump("
+                - " dd("
+                - " COMMIT"
+            triggered_by: ['php']
+#        git_branch_name:
+#            whitelist:
+#                - /(feature|hotfix)\/[\-0-9a-z]+/
+#            blacklist:
+#                - "develop"
+#                - "master"
+#                - "main"
+        phpstan:
+            level: 5
+            ignore_patterns: ['tests', 'public', 'var']
+            metadata:
+                blocking: false
+
+        phpcsfixer2:
+            allow_risky: false
+            cache_file: ~
+            config: .php_cs
+            rules: []
+            using_cache: false
+            verbose: true
+
+        shell:
+            scripts:
+                - ["-c", "php bin/console doctrine:schema:validate -q"]

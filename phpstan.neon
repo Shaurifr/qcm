@@ -1,0 +1,13 @@
+includes:
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+
+parameters:
+    symfony:
+        container_xml_path: '%rootDir%/../../../var/cache/dev/App_KernelDevDebugContainer.xml'
+    excludes_analyse:
+        - %rootDir%/../../../src/Migrations/*
+        - %rootDir%/../../../src/DataFixtures/*
+    ignoreErrors:
+#        - '#Access to an undefined property Faker\\Generator#'
